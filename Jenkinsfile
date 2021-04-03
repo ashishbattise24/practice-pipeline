@@ -3,12 +3,12 @@ pipeline{
   stages{
          stage('Build'){
                          steps{
-                                echo "Building app"
+                                sh 'touch Buildpipe'
                               }
                        }
          stage('Prod'){
                        steps{
-                             echo "Prod Env"
+                              sh 'touch Prodpipe'
                             }
                       }
        
