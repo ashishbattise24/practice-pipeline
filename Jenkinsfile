@@ -3,12 +3,12 @@ pipeline{
   stages{
          stage('Build'){
                          steps{
-                                sh 'touch Buildpipe'
+                                sh 'touch Buildpipe_new'
                               }
                        }
          stage('Prod'){
                        steps{
-                              sh 'touch Prodpipe'
+                              sh 'touch Prodpipe_new'
                             }
                       }
        
