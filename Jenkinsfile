@@ -11,11 +11,6 @@ pipeline{
                          steps{
                                 sh 'touch Buildpipe_new'
                                 echo "Build Version ${NEW_VERSION}"
-                                #withCredentials([
-                                #   usernamePassword(credential: 'ans-id', usernameVariable: USER, passwordVariable: PWD)]
-                                # {
-                                #  sh "username ${USER} and passwd is ${PWD}"
-                                #}
                                 
                               }
                        }
