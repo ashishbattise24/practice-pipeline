@@ -1,20 +1,28 @@
 pipeline{
  agent {label 'node1'}
- environment {
-               NEW_VERSION = '3.1.0'
-               SERVER_CREDENTIAL = credentials('ans-id')
+   
+ parameters{
+            string(name: 'VERSION', defaultValue: '', description: "This is string")
+            choice(name: 'VERSION', choices[1.2,1.3,104], description: "This is version value")
+            booleanParam(name: execTest, defaultValue: true, description: "This is boolean value") 	
  } 
   stages{
          stage('Build'){
                          steps{
                                 sh 'touch Buildpipe_new'
                                 echo "Build Version ${NEW_VERSION}"
-                                echo "credentails are ${SERVER_CREDENTIAL}"
+                                withCredentials([
+                                   usernamePassword(credential: 'ans-id', usernameVariable: USER, passwordVariable: PWD)]
+                                 {
+                                  sh "username ${USER} and passwd is ${PWD}"
+                                }
+                                
                               }
                        }
          stage('Prod'){
                        steps{
                               sh 'touch Prodpipe_new'
+                              echo "Build Version is ${params.VERSION}"
                             }
                       }
        
