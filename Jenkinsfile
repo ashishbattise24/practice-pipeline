@@ -1,21 +1,23 @@
 pipeline{
  agent {label 'node1'}
    
- parameters{
-            choice(name: 'VERSION', choices: [1.2,1.3,104], description: "This is version value")
-            booleanParam(name: 'execTest', defaultValue: true, description: "This is boolean value") 	
-           } 
   stages{
+         stage('init'){
+                        gv = 'load.script.groovy'
+         }
          stage('Build'){
                          steps{
-                                sh 'touch Buildpipe_new'
-                                
+                               script{
+                                      gv.buildApp()  
+                               }
+                                                                
                               }
                        }
-         stage('Prod'){
+         stage('Deploy'){
                        steps{
-                              sh 'touch Prodpipe_new'
-                              echo "Build Version is ${params.VERSION}"
+                             script{
+                                    gv.deployApp()
+                             }
                             }
                       }
        
