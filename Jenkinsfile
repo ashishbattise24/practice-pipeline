@@ -9,7 +9,6 @@ pipeline{
          stage('Build'){
                          steps{
                                 sh 'touch Buildpipe_new'
-                                echo "Build Version ${NEW_VERSION}"
                                 
                               }
                        }
