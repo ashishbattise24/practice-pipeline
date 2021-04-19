@@ -1,31 +1,17 @@
-pipeline{
- agent {label 'node1'}
-   
-  stages{
-         stage('init'){
-                        steps{
-                              script{
-                                      gv = load "script.groovy"
-                                    }  
+pipeline {
+ agent any
+
+ stages{
+       stage("Build"){
+                       steps{
+                               echo "This is build"
                             }
                      }
-         stage('Build'){
-                         steps{
-                               script{
-                                      gv.buildApp()  
-                               }
-                                                                
-                              }
-                       }
-         stage('Deploy'){
+       stage("Prod"){
                        steps{
-                             script{
-                                    gv.deployApp()
-                             }
+                               echo "This is Prod"
                             }
-                      }
-       
- 
+                    }
+  
        }
-
-       }  
+}
