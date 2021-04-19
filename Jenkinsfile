@@ -1,15 +1,15 @@
 pipeline {
- agent any
+ agent {label 'node1'}
 
  stages{
        stage("Build"){
                        steps{
-                               echo "This is build"
+                               sh 'touch Build_file'
                             }
                      }
        stage("Prod"){
                        steps{
-                               echo "This is Prod"
+                               sh 'touch Prod_file'
                             }
                     }
   
