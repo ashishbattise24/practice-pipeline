@@ -11,6 +11,11 @@ pipeline {
                                sh 'touch Prod_file'
                             }
                     }
+      stage("stage"){
+                       steps{
+                               sh 'touch Prod_file'
+                            }
+                    }
   
        }
 }
